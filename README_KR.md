@@ -47,16 +47,68 @@ not-need-claw/
 
 스킬이 트리거될 때마다 전체 프롬프트가 컨텍스트에 주입되는 구조에서, 이 패턴은 "필요한 것만 로드"를 가능하게 합니다.
 
-## 카테고리
+## 전체 37개 유즈케이스
 
-| 카테고리 | 개수 | 예시 |
+### Social Media (4)
+| 유즈케이스 | 파일 | 설명 |
 |---|---|---|
-| Social Media | 4 | Reddit/YouTube 다이제스트, X 분석 |
-| Creative & Building | 5 | 팟캐스트 파이프라인, 게임 개발, 콘텐츠 팩토리 |
-| Infrastructure & DevOps | 2 | 자가복구 서버, n8n 오케스트레이션 |
-| Productivity | 18 | 세컨드 브레인, CRM, 회의록, 습관 트래커 |
-| Research & Learning | 7 | arXiv 리더, RAG 지식 베이스, 아이디어 검증 |
-| Finance | 1 | Polymarket 오토파일럿 |
+| Daily Reddit Digest | [`daily-reddit-digest.md`](usecases/daily-reddit-digest.md) | 즐겨찾는 서브레딧 인기 게시물 일일 요약 |
+| Daily YouTube Digest | [`daily-youtube-digest.md`](usecases/daily-youtube-digest.md) | 구독 채널 신규 영상 일일 요약 |
+| X Account Analysis | [`x-account-analysis.md`](usecases/x-account-analysis.md) | X 계정 정성 분석 |
+| Multi-Source Tech News | [`multi-source-tech-news-digest.md`](usecases/multi-source-tech-news-digest.md) | 109+ 소스에서 기술 뉴스 수집·점수화 |
+
+### Creative & Building (5)
+| 유즈케이스 | 파일 | 설명 |
+|---|---|---|
+| Goal-Driven Tasks | [`overnight-mini-app-builder.md`](usecases/overnight-mini-app-builder.md) | 목표를 쏟아내면 에이전트가 자율적으로 일일 태스크 생성 + 미니앱 빌드 |
+| YouTube Content Pipeline | [`youtube-content-pipeline.md`](usecases/youtube-content-pipeline.md) | 영상 아이디어 탐색·리서치·추적 자동화 |
+| Content Factory | [`content-factory.md`](usecases/content-factory.md) | 멀티에이전트 콘텐츠 파이프라인 — 리서치·작성·디자인 에이전트가 전용 채널에서 협업 |
+| Game Dev Pipeline | [`autonomous-game-dev-pipeline.md`](usecases/autonomous-game-dev-pipeline.md) | 교육용 게임 개발 전체 라이프사이클 + git 워크플로우 |
+| Podcast Pipeline | [`podcast-production-pipeline.md`](usecases/podcast-production-pipeline.md) | 팟캐스트 제작 전 과정 — 게스트 리서치, 대본, 쇼노트, 소셜 홍보 |
+
+### Infrastructure & DevOps (2)
+| 유즈케이스 | 파일 | 설명 |
+|---|---|---|
+| n8n Orchestration | [`n8n-workflow-orchestration.md`](usecases/n8n-workflow-orchestration.md) | n8n으로 API 호출 위임 — 에이전트가 직접 자격증명을 다루지 않음 |
+| Self-Healing Server | [`self-healing-home-server.md`](usecases/self-healing-home-server.md) | 상시 인프라 에이전트 — SSH, 자동 헬스체크, 자가복구 |
+
+### Productivity (18)
+| 유즈케이스 | 파일 | 설명 |
+|---|---|---|
+| Project Management | [`autonomous-project-management.md`](usecases/autonomous-project-management.md) | STATE.yaml 패턴으로 멀티에이전트 분산 프로젝트 관리 |
+| Customer Service | [`multi-channel-customer-service.md`](usecases/multi-channel-customer-service.md) | WhatsApp·Instagram·Email·Google Reviews 통합 AI 고객 응대 |
+| Phone Assistant | [`phone-based-personal-assistant.md`](usecases/phone-based-personal-assistant.md) | 전화로 AI 에이전트 접근 — 핸즈프리 음성 비서 |
+| Inbox Declutter | [`inbox-declutter.md`](usecases/inbox-declutter.md) | 뉴스레터를 요약해서 일일 다이제스트 이메일로 발송 |
+| Personal CRM | [`personal-crm.md`](usecases/personal-crm.md) | 이메일·캘린더에서 연락처 자동 발견 + 자연어 쿼리 |
+| Health Tracker | [`health-symptom-tracker.md`](usecases/health-symptom-tracker.md) | 식사·증상 기록으로 트리거 패턴 분석 + 정기 체크인 |
+| Multi-Channel Assistant | [`multi-channel-assistant.md`](usecases/multi-channel-assistant.md) | Telegram·Slack·이메일·캘린더를 하나의 비서로 통합 |
+| Project State | [`project-state-management.md`](usecases/project-state-management.md) | 이벤트 기반 프로젝트 추적 — 자동 컨텍스트 캡처 |
+| Dynamic Dashboard | [`dynamic-dashboard.md`](usecases/dynamic-dashboard.md) | API·DB·소셜미디어를 병렬 수집하는 실시간 대시보드 |
+| Todoist Manager | [`todoist-task-manager.md`](usecases/todoist-task-manager.md) | 에이전트 사고 과정과 진행 로그를 Todoist에 동기화 |
+| Family Calendar | [`family-calendar-household-assistant.md`](usecases/family-calendar-household-assistant.md) | 가족 캘린더 통합 아침 브리핑 + 가사 재고 관리 |
+| Multi-Agent Team | [`multi-agent-team.md`](usecases/multi-agent-team.md) | 전략·개발·마케팅 전문 에이전트를 팀으로 운영 |
+| Morning Brief | [`custom-morning-brief.md`](usecases/custom-morning-brief.md) | 맞춤 아침 브리핑 — 뉴스, 태스크, 콘텐츠 초안, AI 추천 액션 |
+| Meeting Notes | [`meeting-notes-action-items.md`](usecases/meeting-notes-action-items.md) | 회의 녹취록 → 구조화된 요약 + Jira/Linear 태스크 자동 생성 |
+| Habit Tracker | [`habit-tracker-accountability-coach.md`](usecases/habit-tracker-accountability-coach.md) | 능동적 일일 체크인 — 습관 추적, 스트릭 관리, 톤 자동 조절 |
+| Second Brain | [`second-brain.md`](usecases/second-brain.md) | 아무거나 텍스트로 기억시키고, 나중에 검색 — 제로 마찰 캡처 |
+| Event Confirmation | [`event-guest-confirmation.md`](usecases/event-guest-confirmation.md) | AI 전화로 게스트 참석 확인 + 요약 자동 정리 |
+| Phone Notifications | [`phone-call-notifications.md`](usecases/phone-call-notifications.md) | 에이전트 알림을 실제 전화로 — 아침 브리핑, 가격 하락, 긴급 이메일 |
+
+### Research & Learning (7)
+| 유즈케이스 | 파일 | 설명 |
+|---|---|---|
+| Earnings Tracker | [`earnings-tracker.md`](usecases/earnings-tracker.md) | AI·테크 실적 발표 자동 추적 — 프리뷰, 알림, 상세 요약 |
+| Knowledge Base (RAG) | [`knowledge-base-rag.md`](usecases/knowledge-base-rag.md) | URL·기사·트윗을 채팅에 던지면 검색 가능한 지식 베이스 구축 |
+| Market Research | [`market-research-product-factory.md`](usecases/market-research-product-factory.md) | Reddit·X에서 페인포인트 발굴 → 에이전트가 MVP 빌드 |
+| Idea Validator | [`pre-build-idea-validator.md`](usecases/pre-build-idea-validator.md) | 빌드 전 GitHub·HN·npm·PyPI 스캔 — 레드오션이면 중단, 블루오션이면 진행 |
+| Semantic Memory | [`semantic-memory-search.md`](usecases/semantic-memory-search.md) | 마크다운 메모리 파일에 벡터 기반 시맨틱 검색 추가 |
+| arXiv Reader | [`arxiv-paper-reader.md`](usecases/arxiv-paper-reader.md) | arXiv 논문을 대화형으로 읽기·분석·비교·요약 |
+| LaTeX Writing | [`latex-paper-writing.md`](usecases/latex-paper-writing.md) | 대화형 LaTeX 논문 작성 + 즉시 PDF 프리뷰 |
+
+### Finance (1)
+| 유즈케이스 | 파일 | 설명 |
+|---|---|---|
+| Polymarket Autopilot | [`polymarket-autopilot.md`](usecases/polymarket-autopilot.md) | 예측 시장 자동 페이퍼 트레이딩 — 백테스팅 + 일일 리포트 |
 
 ## 분석 요약
 
