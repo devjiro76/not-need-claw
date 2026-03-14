@@ -2,21 +2,23 @@
 
 > You don't need OpenClaw. You just need a capable AI agent.
 
-[awesome-openclaw-usecases](https://github.com/hesamsheikh/awesome-openclaw-usecases)의 40개 유즈케이스를 분석한 결과, **92.5%가 OpenClaw 없이도 동작** 가능했습니다. 이 레포는 OpenClaw 의존성을 제거한 37개 유즈케이스를 **컨텍스트 효율적인 스킬 구조**로 재구성한 것입니다.
+We analyzed all 40 use cases from [awesome-openclaw-usecases](https://github.com/hesamsheikh/awesome-openclaw-usecases) and found that **92.5% work without OpenClaw**. This repo extracts those 37 agent-agnostic use cases into a **context-efficient skill structure**.
+
+[한국어 README](README_KR.md)
 
 ## Why This Exists
 
-원본 레포의 유즈케이스들은 "OpenClaw 스킬"로 포장되어 있지만, 실제 의존하는 건:
+The original use cases are packaged as "OpenClaw skills", but here's what they actually depend on:
 
-| 기능 | 실체 | 아무 에이전트에서 |
+| "OpenClaw Feature" | What It Really Is | Any Agent Can Do It |
 |---|---|---|
-| `clawhub install reddit-readonly` | Reddit API 래퍼 | WebFetch / MCP / curl |
-| OpenClaw 메모리 | 텍스트 저장 + 검색 | 파일 / SQLite / 벡터 DB |
-| SSH 접근 | 쉘 커맨드 실행 | Bash / 터미널 |
-| `sessions_spawn` | 서브에이전트 | Agent tool / CrewAI / AutoGen |
-| `HEARTBEAT.md` | 스케줄링 | cron / launchd |
+| `clawhub install reddit-readonly` | Reddit API wrapper | WebFetch / MCP / curl |
+| OpenClaw memory | Text storage + search | Files / SQLite / Vector DB |
+| SSH access | Shell command execution | Bash / terminal |
+| `sessions_spawn` | Sub-agents | Agent tool / CrewAI / AutoGen |
+| `HEARTBEAT.md` | Scheduling | cron / launchd |
 
-**OpenClaw 고유 기능은 하나도 없습니다.** 프롬프트 패턴과 워크플로우 아이디어가 가치의 본질입니다.
+**None of these are OpenClaw-specific.** The real value is in the prompt patterns and workflow ideas — and those are platform-agnostic.
 
 ## Architecture: Index Skill Pattern
 
@@ -33,17 +35,17 @@ not-need-claw/
 
 | Approach | Context cost per invocation | Practical? |
 |---|---|---|
-| 37개를 1파일에 몰아넣기 | **~30,000 tokens** (every time) | No |
-| 37개를 개별 스킬로 분리 | Skill list bloat + 37 trigger descriptions | Messy |
-| **Index skill + on-demand files** | **~1,200 tokens** (index) + **~800 tokens** (selected file) | **Yes** |
+| All 37 in one file | **~30,000 tokens** (every time) | No |
+| 37 individual skills | Skill list bloat + 37 trigger descriptions | Messy |
+| **Index skill + on-demand files** | **~1,200 tokens** (index) + **~800 tokens** (selected) | **Yes** |
 
-**Index Skill Pattern**의 핵심:
+The **Index Skill Pattern** works because:
 
-1. **SKILL.md는 목차만** — 카테고리별 한줄 설명 + 파일명. ~1,200 tokens.
-2. **유즈케이스는 별도 파일** — 사용자가 선택하면 해당 파일 하나만 Read. ~800 tokens.
-3. **총 비용 ~2,000 tokens** — monolithic 대비 **93% 절약**.
+1. **SKILL.md is just a table of contents** — one-line descriptions + filenames. ~1,200 tokens.
+2. **Use cases live in separate files** — only the selected file gets loaded via Read. ~800 tokens.
+3. **Total cost ~2,000 tokens** — **93% savings** vs monolithic.
 
-스킬이 트리거될 때마다 전체 프롬프트가 컨텍스트에 주입되는 구조에서, 이 패턴은 "필요한 것만 로드"를 가능하게 합니다.
+In skill systems where the entire prompt is injected into context on every trigger, this pattern enables "load only what you need".
 
 ## Categories
 
