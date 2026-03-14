@@ -1,6 +1,6 @@
 ---
 name: agent-usecases
-description: "AI 에이전트 활용 사례 37개 — 자동화 아이디어 탐색 및 설정 가이드 제공. 트리거: '뭘 자동화할 수 있어', '유즈케이스', 'use case', '자동화 아이디어', '에이전트로 뭐 할 수 있어'"
+description: "37 real-world AI agent use cases — browse by category, get setup guides with prompts. No OpenClaw dependency. Covers productivity, DevOps, research, social media, creative workflows, and more."
 ---
 
 # AI Agent Use Cases
